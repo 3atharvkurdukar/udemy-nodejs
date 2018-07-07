@@ -1,0 +1,22 @@
+{
+  "name": "udemy-nodejs",
+  "version": "1.0.0",
+  "description": "Simple node projects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3atharvkurdukar/udemy-nodejs.git"
+  },
+  "author": "Atharv Kurdukar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3atharvkurdukar/udemy-nodejs/issues"
+  },
+  "homepage": "https://github.com/3atharvkurdukar/udemy-nodejs#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}

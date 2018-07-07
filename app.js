@@ -1,24 +1,40 @@
 console.log('App started!');
 
+/**
+ * Using readymade modules
+ */
 // const fs = require('fs');
 // const os = require('os');
 
 // let user = os.userInfo();
 
-// Async Method
+// // Async Method
 // fs.appendFile('greetings.txt', `Hello ${user.username}!`, (err) => {
 //     if (err) {
 //         console.log(err);
 //     }
 // });
 
-// Synchronous Method
+// // Synchronous Method
 // fs.appendFileSync('greetings.txt', `Hello ${user.username}!`);
 
-const notes = require('./notes.js');
+/**
+ * Creating custom module  
+ */
+// const notes = require('./notes.js');
+// let res = notes.addNote();
+// console.log('Sum = ', notes.add(15, 80));
 
-let res = notes.addNote();
+/**
+ * Using npm & loadsh module
+ */
 
-let sum = notes.add(15, 80);
-console.log('Sum = ', notes.add(15, 80));
+const _ = require('lodash');
+console.log(_.isString(true));
+console.log(_.isString('Sample'));
+
+const array = [15, 28, 40, 13, 40, 15];
+const filteredArray = _.uniq(array);
+console.log(`The unique elements of ${array} are ${filteredArray}.`);
+
 
