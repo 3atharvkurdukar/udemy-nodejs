@@ -28,13 +28,31 @@ console.log('App started!');
 /**
  * Using npm & loadsh module
  */
+// const _ = require('lodash');
+// console.log(_.isString(true));
+// console.log(_.isString('Sample'));
 
-const _ = require('lodash');
-console.log(_.isString(true));
-console.log(_.isString('Sample'));
+// const array = [15, 28, 40, 13, 40, 15];
+// const filteredArray = _.uniq(array);
+// console.log(`The unique elements of ${array} are ${filteredArray}.`);
 
-const array = [15, 28, 40, 13, 40, 15];
-const filteredArray = _.uniq(array);
-console.log(`The unique elements of ${array} are ${filteredArray}.`);
+/**
+ * Taking user input
+ */
+const notes = require('./notes');
+
+let command = process.argv[2]
+
+if (command === 'add') {
+    console.log('Adding new note');
+} else if (command === 'list') {
+    console.log('Listing all the notes');
+} else if (command === 'remove') {
+    console.log('Removing note');
+} else if (command === 'read') {
+    console.log('Reading note');
+} else {
+    console.log('Command not recognied!');
+}
 
 
