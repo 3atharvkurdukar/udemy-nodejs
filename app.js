@@ -38,20 +38,27 @@ console.log('App started!');
 
 /**
  * Taking user input
+ * Using yargs module
  */
+const yargs = require('yargs');
 const notes = require('./notes');
 
-let command = process.argv[2]
+const argv = yargs.argv;
+let command = argv._[0];
 
 if (command === 'add') {
-    console.log('Adding new note');
-} else if (command === 'list') {
-    console.log('Listing all the notes');
-} else if (command === 'remove') {
-    console.log('Removing note');
-} else if (command === 'read') {
-    console.log('Reading note');
-} else {
+    notes.addNote(argv.title, argv.body);
+}
+else if (command === 'list') {
+    notes.getAll();
+}
+else if (command === 'remove') {
+    notes.getNote(argv.title);
+}
+else if (command === 'read') {
+    notes.removeNote(argv.title);
+}
+else {
     console.log('Command not recognied!');
 }
 
