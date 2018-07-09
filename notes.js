@@ -4,10 +4,29 @@
 // };
 
 // module.exports.add  = (a, b) => a + b;
+const fs = require('fs');
 
 const addNote = (title, body) => {
-    console.log('Title:', title);
-    console.log('Body:', body);
+    let notes = [];
+    const note= {
+        title, 
+        body
+    };
+
+    try {
+        notes = JSON.parse(fs.readFileSync('notes-data.json'));
+    } catch (error) {
+        
+    }
+
+    const duplicateNotes = notes.filter(note => note.title === title);
+
+    if (duplicateNotes.length === 0) {
+        notes.push(note);
+        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    } else {
+        console.log('ERR: Duplicate Note!');
+    }
 };
 
 const getAll = () => {
