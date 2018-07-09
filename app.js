@@ -1,5 +1,3 @@
-console.log('App started!');
-
 /**
  * Using readymade modules
  */
@@ -43,7 +41,31 @@ console.log('App started!');
 const yargs = require('yargs');
 const notes = require('./notes');
 
-const argv = yargs.argv;
+const titleOptions = {
+    describe: 'Title of note',
+    demand: true,
+    alias: 't'
+};
+const bodyOptions = {
+    describe: 'Body of note',
+    demand: true,
+    alias: 'b'
+};
+
+const argv = yargs
+    .command('add', 'Add a note', {
+        title: titleOptions,
+        body: bodyOptions
+    })
+    .command('remove', 'Remove a note', {
+        title: titleOptions
+    })
+    .command('list', 'List all notes')
+    .command('read', 'Read a note', {
+        title: titleOptions
+    })
+    .help()
+    .argv;
 let command = argv._[0];
 
 switch (command) {
@@ -61,7 +83,9 @@ switch (command) {
         console.log(notesRemoved ? 'Note was removed' : 'ERR: Note not found!');
         break;
     case 'list':
-        notes.getAll();
+        var allNotes = notes.getAll();
+        console.log(`Printing ${allNotes.length} notes...`);
+        allNotes.forEach(note => notes.logNote(note));
         break;
     case 'read':
         var note = notes.getNote(argv.title);

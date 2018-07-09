@@ -35,7 +35,7 @@ const addNote = (title, body) => {
 };
 
 const getAll = () => {
-    
+    return fetchNotes();
 };
 
 const getNote = (title) => {
@@ -54,6 +54,7 @@ const removeNote = (title) => {
 };
 
 const logNote = (note) => {
+    console.log('----------------------------------------');
     console.log(`\tTitle:  ${note.title}`);
     console.log(`\tBody :  ${note.body}`);
 };
