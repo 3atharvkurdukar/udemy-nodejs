@@ -7,10 +7,8 @@
         <title>Express Demo</title>
     </head>
     <body>
-        <h1>Home</h1>
-        <p>{{welcomeMessage}}</p>
-        <footer>
-            <p>Copyright {{currentYear}} &copy;</p>
-        </footer>
+        {{> header }}
+        <p>{{screamIt welcomeMessage}}</p>
+        {{> footer}}
     </body>
 </html>
