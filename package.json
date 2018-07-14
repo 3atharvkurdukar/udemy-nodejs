@@ -4,7 +4,8 @@
   "description": "This repository demonstrates what I learnt from the Udemy - The Complete Nodejs Developer Course - 2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha **/*.test.js"
+    "test": "mocha **/*.test.js",
+    "test-watch": "nodemon --exec \"npm test\""
   },
   "repository": {
     "type": "git",
