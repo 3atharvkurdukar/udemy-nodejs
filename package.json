@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/3atharvkurdukar/udemy-nodejs#readme",
   "dependencies": {
+    "express": "^4.16.3",
     "mocha": "^5.2.0"
   },
   "devDependencies": {
-    "expect": "^1.20.2"
+    "expect": "^1.20.2",
+    "supertest": "^3.1.0"
   }
 }

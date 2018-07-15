@@ -52,7 +52,7 @@ it('should expect some values', () => {
 
 it('should async add two values', (done) => {   // 'done' makes mocha wait for async process
     utils.asyncAdd(4, 3, (sum) => {
-        expect(sum).toBe(8);
+        expect(sum).toBe(7);
         done(); // 'done' indicates the test is complete
     });
 });
