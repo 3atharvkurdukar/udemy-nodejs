@@ -7,6 +7,7 @@ const {User} = require('./models/user');
 
 const app = express();
 
+// body-parser converts a received JSON request into object
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
@@ -24,3 +25,7 @@ app.post('/todos', (req, res) => {
 app.listen(3000, () => {
     console.log('Running on port 3000');
 });
+
+module.exports = {
+    app
+};
