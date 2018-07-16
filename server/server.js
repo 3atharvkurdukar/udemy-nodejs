@@ -11,13 +11,18 @@ mongoose.connect('mongodb://localhost:27017/TodoApp');
 // mongoose generates a DB model for validating the input
 const Todo = mongoose.model('Todo', {
     text: {
-        type: String
+        type: String,
+        required: true,
+        minlength: 1,
+        trim: true
     },
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     completedAt: {
-        type: Number
+        type: Number,
+        default: null
     }
 });
 
@@ -30,6 +35,27 @@ const newTodo = new Todo({
 
 // save() method sends the data to the database
 newTodo.save().then((doc) => {
+    console.log('Saved todo', doc);
+}, (err) => {
+    console.log('Unable to save todo', err);
+});
+
+const User = mongoose.model('User', {
+    email: {
+        type: String,
+        required: true,
+        minlength: 1,
+        trim: true
+    },
+    password: {
+        type: String
+    }
+});
+
+const newUser = new User({
+    email: '3atharvkurdukar@gmail.com'
+});
+newUser.save().then((doc) => {
     console.log('Saved todo', doc);
 }, (err) => {
     console.log('Unable to save todo', err);
