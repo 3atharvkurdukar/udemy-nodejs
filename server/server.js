@@ -1,62 +1,26 @@
-// 'mongoose' is a MongoDB based module that allows faster,
-// simpler and much easier database connectivity 
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const mongoose = require('mongoose');
+const {mongoose} = require('./db/mongoose');
+const {Todo} = require('./models/todo');
+const {User} = require('./models/user');
 
-// By default, mongoose uses Third-party promises.
-// So, we can make sure it uses deafult ES6 promises
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/TodoApp');
+const app = express();
 
-// mongoose generates a DB model for validating the input
-const Todo = mongoose.model('Todo', {
-    text: {
-        type: String,
-        required: true,
-        minlength: 1,
-        trim: true
-    },
-    completed: {
-        type: Boolean,
-        default: false
-    },
-    completedAt: {
-        type: Number,
-        default: null
-    }
+app.use(bodyParser.json());
+
+app.post('/todos', (req, res) => {
+    const newTodo = new Todo({
+        text: req.body.text,
+    });
+
+    newTodo.save().then((doc) => {
+        res.send(doc);
+    }, (err) => {
+        res.status(400).send(err);
+    });
 });
 
-// The generator passed to it is  used to add element
-const newTodo = new Todo({
-    text: 'Pack luggage',
-    completed: true,
-    completedAt: 123456
-});
-
-// save() method sends the data to the database
-newTodo.save().then((doc) => {
-    console.log('Saved todo', doc);
-}, (err) => {
-    console.log('Unable to save todo', err);
-});
-
-const User = mongoose.model('User', {
-    email: {
-        type: String,
-        required: true,
-        minlength: 1,
-        trim: true
-    },
-    password: {
-        type: String
-    }
-});
-
-const newUser = new User({
-    email: '3atharvkurdukar@gmail.com'
-});
-newUser.save().then((doc) => {
-    console.log('Saved todo', doc);
-}, (err) => {
-    console.log('Unable to save todo', err);
+app.listen(3000, () => {
+    console.log('Running on port 3000');
 });

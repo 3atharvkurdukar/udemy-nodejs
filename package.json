@@ -4,6 +4,7 @@
   "description": "This repository demonstrates what I learnt from the Udemy - The Complete Nodejs Developer Course - 2",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "expect": "^1.20.2",
     "express": "^4.16.3",
     "mongodb": "^3.1.1",
