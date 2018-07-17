@@ -17,8 +17,12 @@
     "supertest": "^3.1.0"
   },
   "scripts": {
+    "run": "node server/server.js",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
+  },
+  "engines": {
+    "node": "10.6.0"
   },
   "repository": {
     "type": "git",

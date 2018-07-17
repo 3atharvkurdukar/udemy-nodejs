@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const {mongoose} = require('./db/mongoose');
 const {ObjectID} = require('mongodb');
 const {Todo} = require('./models/todo');
-const {User} = require('./models/user');
+// const {User} = require('./models/user');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // body-parser converts a received JSON request into object
 app.use(bodyParser.json());
@@ -50,8 +50,8 @@ app.get('/todos/:id', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Running on port 3000');
+app.listen(port, () => {
+    console.log(`Running on port ${port}`);
 });
 
 module.exports = {
