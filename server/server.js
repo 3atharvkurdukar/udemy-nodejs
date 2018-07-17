@@ -11,6 +11,10 @@ const port = process.env.PORT || 3000;
 // body-parser converts a received JSON request into object
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.send('<h1 style="text-align:center">Welcome to TODO API</h1>');
+});
+
 app.post('/todos', (req, res) => {
     const newTodo = new Todo({
         text: req.body.text,
