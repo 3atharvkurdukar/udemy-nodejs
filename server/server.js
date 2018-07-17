@@ -21,8 +21,8 @@ app.post('/todos', (req, res) => {
         text: req.body.text,
     });
 
-    newTodo.save().then((doc) => {
-        res.send(doc);
+    newTodo.save().then((todo) => {
+        res.send({todo});
     }, (err) => {
         res.status(400).send(err);
     });
@@ -45,7 +45,7 @@ app.get('/todos/:id', (req, res) => {
     }
     Todo.findById(id).then((todo) => {
         if (todo) {
-            res.send(todo);
+            res.send({todo});
         }
         else {
             res.status(404).send();
@@ -64,7 +64,7 @@ app.delete('/todos/:id', (req, res) => {
     }
     Todo.findByIdAndRemove(id).then((todo) => {
         if (todo) {
-            res.send(todo);
+            res.send({todo});
         } else {
             res.status(404).send();
         }
