@@ -5,6 +5,6 @@ const mongoose = require('mongoose');
 // By default, mongoose uses Third-party promises.
 // So, we can make sure it uses deafult ES6 promises
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/TodoApp');
+mongoose.connect(process.env.MONGODB_URI);
 
 module.exports = { mongoose };
