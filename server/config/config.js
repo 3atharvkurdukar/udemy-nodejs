@@ -1,4 +1,4 @@
-const env = process.env.NODE_ENV || 'develipment';
+const env = process.env.NODE_ENV || 'development';
 console.log(`******env: ${env}*****`);
 
 if (env === 'development') {
