@@ -109,13 +109,15 @@ app.patch('/todos/:id', (req, res) => {
 
 app.post('/users', (req, res) => {
     const body = _.pick(req.body, ['email', 'password']);
-    const newUser = new User(body);
+    const user = new User(body);
 
-    newUser.save().then((user) => {
-        res.send({
-            user
-        });
-    }, (err) => {
+    user.save().then(() => {
+        const token = user.generateAuthToken();
+        return token;
+    }).then((token) => {
+        res.header('x-auth', token).send(user);
+    }).catch((err) => {
+        console.log(err);
         res.status(400).send(err);
     });
 });
