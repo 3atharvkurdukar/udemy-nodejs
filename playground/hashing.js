@@ -1,6 +1,8 @@
-// 'crypto-js' is a JavaScript module that has all security related
-// methods included in it like MD5, SHA, AES, etc.
-const {SHA256} = require('crypto-js');
+/**
+ *'crypto-js' is a JavaScript module that has all security related
+ * methods included in it like MD5, SHA, AES, etc.
+ */
+// const {SHA256} = require('crypto-js');
 
 // SHA256 is a one way hash in which it is not possible to get the original
 // data back once it has been hashed.
@@ -32,20 +34,40 @@ const {SHA256} = require('crypto-js');
 // if (resultHash === token.hash) {
 //     console.log('Data was not changed. 🔐');
 // } else {
-//     console.log('Data was changed. Do not trust! 🚨');
+    // console.log('Data was changed. Do not trust! 🚨');
 // }
+/**
+ * 'jsonwebtoken' is a module that automates the process of creating and 
+ * verifying a token using a private key.
+ */
+// const jwt = require('jsonwebtoken');
 
-// 'jsonwebtoken' is a module that automates the process of creating and 
-// verifying a token using a private key.
-const jwt = require('jsonwebtoken');
+// const data = {
+//     id: 10
+// };
+// console.log(`Data: ${data}`);
 
-const data = {
-    id: 10
-};
-console.log(`Data: ${data}`);
+// const token = jwt.sign(data, '123abc');
+// console.log(`Token: ${token}`);
 
-const token = jwt.sign(data, '123abc');
-console.log(`Token: ${token}`);
+// const decoded = jwt.verify(token, '123abc');
+// console.log(`Decoded: ${decoded}`);
 
-const decoded = jwt.verify(token, '123abc');
-console.log(`Decoded: ${decoded}`);
+/**
+ * bcrypt is a module used to hash the password by generate some random salt
+ */
+const bcrypt = require('bcryptjs');
+
+const password = 'password@123';
+
+bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) => {
+        console.log(hash);
+    });
+});
+
+const hashPassword = '$2a$10$jYfpfQ0dq4mcNdWHR0G4.uhvluNzpLkVVZR/0wtyY6K.vBkrl6uDS';
+
+bcrypt.compare(password, hashPassword,(err, res) =>{
+    console.log(res);
+});

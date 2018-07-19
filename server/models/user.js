@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -66,6 +67,19 @@ UserSchema.methods.generateAuthToken = function () {
         return token;
     });
 };
+
+UserSchema.pre('save', function () {
+    const user = this;
+
+    if (user.isModified('password')) {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(user.password, salt);
+        user.password = hash;
+        next();
+    } else {
+        next();
+    }
+});
 
 // mongoose generates a DB model for validating the input
 const User = mongoose.model('User', UserSchema);
