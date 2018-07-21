@@ -17,7 +17,7 @@
   "devDependencies": {
     "expect": "^1.20.2",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.2",
+    "nodemon": "^1.18.3",
     "supertest": "^3.1.0"
   },
   "scripts": {
