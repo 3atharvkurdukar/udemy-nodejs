@@ -33,13 +33,6 @@ const UserSchema = new mongoose.Schema({
     }]
 });
 
-UserSchema.methods.toJSON = function () {
-    const user = this;
-    const userObject = user.toObject();
-
-    return _.pick(userObject, ['_id', 'email']);
-};
-
 UserSchema.statics.findByToken = function(token) {
     const User = this;
     var decoded;
@@ -83,6 +76,23 @@ UserSchema.methods.generateAuthToken = function () {
     return user.save().then(() => {
         return token;
     });
+};
+
+UserSchema.methods.removeToken = function (token) {
+    const user = this;
+
+    return user.update({
+        $pull: {
+            tokens : {token}
+        }
+    });
+};
+
+UserSchema.methods.toJSON = function () {
+    const user = this;
+    const userObject = user.toObject();
+
+    return _.pick(userObject, ['_id', 'email']);
 };
 
 UserSchema.pre('save', function () {
