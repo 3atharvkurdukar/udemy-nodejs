@@ -1,0 +1,28 @@
+{
+  "name": "udemy-nodejs",
+  "version": "1.5.0",
+  "description": "This repository demonstrates what I learnt from the Udemy - The Complete Nodejs Developer Course - 2",
+  "main": "app.js",
+  "dependencies": {
+    "expect": "^23.4.0",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "10.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3atharvkurdukar/udemy-nodejs.git"
+  },
+  "author": "Atharv Kurdukar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3atharvkurdukar/udemy-nodejs/issues"
+  },
+  "homepage": "https://github.com/3atharvkurdukar/udemy-nodejs#readme"
+}
