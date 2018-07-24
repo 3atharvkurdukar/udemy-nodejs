@@ -6,11 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Chat App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="main.js"></script>
 </head>
 
 <body>
     <h1 style="text-align:center">Welcome to My Chat App</h1>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('connect', (socket) => {
+            console.log('Connected to the server 😊');
+        });
+        socket.on('disconnect', (socket) => {
+            console.log('Server disconnected 😥');
+        });
+    </script>
 </body>
 
 </html>
