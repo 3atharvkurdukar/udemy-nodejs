@@ -15,10 +15,22 @@ io.on('connection', (socket) => {
     console.log('New user connected! 😊');
 
     socket.emit('newMessage', {
-        from: 'Bob',
-        text: 'Something...',
-        createdAt: 1423545345
+        from: 'Admin',
+        text: 'Welcome to chat app',
+        createdAt: new Date().getTime()
+   });
+
+    socket.broadcast.emit('newMessage', {
+        from: 'Admin',
+        text: 'New user joined!',
+        createdAt: new Date().getTime()
     });
+
+    // socket.emit('newMessage', {
+    //     from: 'Bob',
+    //     text: 'Something...',
+    //     createdAt: 1423545345
+    // });
 
     socket.on('createMessage', (message) => {
         console.log('Message created:', message);
