@@ -20,14 +20,8 @@ io.on('connection', (socket) => {
 
     socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined!'));
 
-    // socket.emit('newMessage', {
-    //     from: 'Bob',
-    //     text: 'Something...',
-    //     createdAt: 1423545345
-    // });
-
     socket.on('createMessage', (message) => {
-        console.log('Message created:', message);
+        io.emit('newMessage', generateMessage(message.from, message.text));
     });
     socket.on('disconnect', () => {
         console.log('A user disconnected. 😥');
