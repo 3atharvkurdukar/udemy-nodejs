@@ -169,6 +169,11 @@ button:disabled {
 
 .message {
     padding: 10px;
+    border: 2px solid rgba(49, 84, 129, 1);
+    background-color: #f3f6ff;
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px 50px 10px 0px;
 }
 
 .message__title {
@@ -182,7 +187,7 @@ button:disabled {
 }
 
 .message__title span {
-    color: #999;
+    color: rgb(116, 116, 116);
 }
 
 @media (max-width: 600px) {
