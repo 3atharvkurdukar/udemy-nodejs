@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Join | Chat App</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body class="centered-form">
+    <div class="centered-form__form">
+        <form action="/chat.html">
+            <div class="form-field">
+                <h3>Join a Chat</h3>
+            </div>
+            <div class="form-field">
+                <label>Display Name</label>
+                <input type="text" id="name" name="name" autofocus />
+            </div>
+            <div class="form-field">
+                <label>Room Name</label>
+                <input type="text" id="room" name="room" />
+            </div>
+            <div class="form-field">
+                <button>Join</button>
+            </div>
+        </form>
+    </div>
+    <script src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script>
+        $('form').submit(function () {
+            $(':input').each(function () {
+                $(this).val($.trim($(this).val()))
+            });
+            return true;
+        });
+    </script>
+</body>
+
+</html>
